@@ -1,7 +1,9 @@
-QT       += core gui
+QT       += core gui widgets opengl openglwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+TARGET = cube
+TEMPLATE = app
 CONFIG += c++11
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -56,8 +58,10 @@ SOURCES += \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
     SceneWidget.cpp \
+    geometryengine.cpp \
     main.cpp \
     MainWindow.cpp \
+    mainwidget.cpp \
     rubik.cpp
 
 HEADERS += \
@@ -110,6 +114,8 @@ HEADERS += \
     Box2D/Rope/b2Rope.h \
     MainWindow.h \
     SceneWidget.h \
+    geometryengine.h \
+    mainwidget.h \
     rubik.h
 
 FORMS += \
@@ -131,8 +137,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    ball1.png
+DISTFILES +=
 
 RESOURCES += \
-    resources.qrc
+    resources.qrc \
+    shaders.qrc \
+    textures.qrc

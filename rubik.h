@@ -13,10 +13,12 @@ class Education : public QMainWindow
 
 public:
     explicit Education(QWidget *parent = nullptr);
+    void paintEvent(QPaintEvent *);
     ~Education();
 
 private:
     Ui::Education *ui;
+    QImage image;
 };
 
 #endif // RUBIK_H
