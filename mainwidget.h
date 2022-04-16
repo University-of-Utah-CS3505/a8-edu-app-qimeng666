@@ -70,6 +70,7 @@ class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions
 
 public:
     using QOpenGLWidget::QOpenGLWidget;
+    MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
 
 protected:

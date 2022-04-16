@@ -54,6 +54,11 @@
 
 #include <cmath>
 
+MainWidget::MainWidget(QWidget *parent)
+    : QOpenGLWidget(parent)
+{
+
+}
 MainWidget::~MainWidget()
 {
     // Make sure the context is current when deleting the texture
