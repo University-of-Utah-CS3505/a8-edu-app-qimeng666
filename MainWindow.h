@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "rubik.h"
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -18,6 +19,7 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
 
 private:
     Ui::MainWindow *ui;

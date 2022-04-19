@@ -61,6 +61,8 @@
 #include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
+#include <QDebug>
+
 
 class GeometryEngine;
 
@@ -72,6 +74,10 @@ public:
     using QOpenGLWidget::QOpenGLWidget;
     MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
+    void rotRight();
+    void rotLeft();
+    void rotUp();
+    void rotDown();
 
 protected:
     void mousePressEvent(QMouseEvent *e) override;
@@ -84,6 +90,8 @@ protected:
 
     void initShaders();
     void initTextures();
+
+
 
 private:
     QBasicTimer timer;

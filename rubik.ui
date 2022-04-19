@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>852</width>
+    <height>654</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,11 +17,63 @@
    <widget class="MainWidget" name="openGLWidget">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>50</x>
       <y>20</y>
       <width>621</width>
       <height>421</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rotButtonRight">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>470</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>right</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rotButtonLeft">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>470</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>left</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rotButtonUp">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>450</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>up</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="rotButtonDown">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>530</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>down</string>
     </property>
    </widget>
   </widget>
@@ -30,7 +82,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>852</width>
      <height>25</height>
     </rect>
    </property>

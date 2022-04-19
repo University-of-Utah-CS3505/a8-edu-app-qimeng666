@@ -8,8 +8,10 @@ Education::Education(QWidget *parent) :
     ui(new Ui::Education)
 {
     ui->setupUi(this);
-    MainWidget widget;
-    widget.show();
+    connect(ui->rotButtonRight , &QPushButton::clicked , ui->openGLWidget, &MainWidget::rotRight);
+    connect(ui->rotButtonLeft , &QPushButton::clicked , ui->openGLWidget, &MainWidget::rotLeft);
+    connect(ui->rotButtonUp , &QPushButton::clicked , ui->openGLWidget, &MainWidget::rotUp);
+    connect(ui->rotButtonDown , &QPushButton::clicked , ui->openGLWidget, &MainWidget::rotDown);
 
 }
 

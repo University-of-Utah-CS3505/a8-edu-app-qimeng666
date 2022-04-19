@@ -57,7 +57,6 @@
 MainWidget::MainWidget(QWidget *parent)
     : QOpenGLWidget(parent)
 {
-
 }
 MainWidget::~MainWidget()
 {
@@ -68,8 +67,31 @@ MainWidget::~MainWidget()
     delete geometries;
     doneCurrent();
 }
+void MainWidget::rotRight(){
 
-//! [0]
+    rotationAxis = (QVector3D(0,1,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, +45) * rotation;
+    update();
+}
+void MainWidget::rotLeft(){
+
+    rotationAxis = (QVector3D(0,1,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, -45) * rotation;
+    update();
+}
+void MainWidget::rotUp(){
+
+    rotationAxis = (QVector3D(1,0,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, +45) * rotation;
+    update();
+}
+void MainWidget::rotDown(){
+
+    rotationAxis = (QVector3D(1,0,0)).normalized();
+    rotation = QQuaternion::fromAxisAndAngle(rotationAxis, -45) * rotation;
+    update();
+}
+
 void MainWidget::mousePressEvent(QMouseEvent *e)
 {
     // Save mouse press position
@@ -90,6 +112,7 @@ void MainWidget::mouseReleaseEvent(QMouseEvent *e)
 
     // Calculate new rotation axis as weighted sum
     rotationAxis = (rotationAxis * angularSpeed + n * acc).normalized();
+     qDebug()<<rotationAxis;
 
     // Increase angular speed
     angularSpeed += acc;
@@ -201,7 +224,6 @@ void MainWidget::paintGL()
 
     texture->bind();
 
-//! [6]
     // Calculate model view transformation
     QMatrix4x4 matrix;
     matrix.translate(0.0, 0.0, -5.0);
@@ -209,7 +231,7 @@ void MainWidget::paintGL()
 
     // Set modelview-projection matrix
     program.setUniformValue("mvp_matrix", projection * matrix);
-//! [6]
+
 
     // Use texture unit 0 which contains cube.png
     program.setUniformValue("texture", 0);

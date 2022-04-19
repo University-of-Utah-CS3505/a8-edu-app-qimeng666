@@ -2,7 +2,7 @@
 #define RUBIK_H
 
 #include <QMainWindow>
-
+#include "mainwidget.h"
 namespace Ui {
 class Education;
 }
@@ -19,6 +19,7 @@ public:
 private:
     Ui::Education *ui;
     QImage image;
+    MainWidget mainWidget;
 };
 
 #endif // RUBIK_H
