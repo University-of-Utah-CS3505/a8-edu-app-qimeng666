@@ -53,10 +53,63 @@
 #include <QMouseEvent>
 
 #include <cmath>
+#include <iostream>
 
 MainWidget::MainWidget(QWidget *parent)
     : QOpenGLWidget(parent)
 {
+    Cube c1;     //top front left
+    c1.posX = -1;
+    c1.posY = 1;
+    c1.posZ = -10;
+    cubelist[0] = c1;
+
+    Cube c2;
+    c2.posX = 1;
+    c2.posY = 1;
+    c2.posZ = -10;
+    cubelist[1] = c2;
+
+    Cube c3;
+    c3.posX = -1;
+    c3.posY = -1;
+    c3.posZ = -10;
+    cubelist[2] = c3;
+
+    Cube c4;
+    c4.posX = 1;
+    c4.posY = -1;
+    c4.posZ = -10;
+    cubelist[3] = c4;
+
+    Cube c5;
+    c5.posX = -1;
+    c5.posY = 1;
+    c5.posZ = -12;
+    cubelist[4] = c5;
+
+    Cube c6;
+    c6.posX = 1;
+    c6.posY = 1;
+    c6.posZ = -12;
+    cubelist[5] = c6;
+
+    Cube c7;
+    c7.posX = -1;
+    c7.posY = -1;
+    c7.posZ = -12;
+    cubelist[6] = c7;
+
+    Cube c8;
+    c8.posX = 1;
+    c8.posY = -1;
+    c8.posZ = -12;
+    cubelist[7] = c8;
+
+    for(int i = 0; i<=8;i++){
+        cubelist[i].wordPos = 0;
+    }
+
 }
 MainWidget::~MainWidget()
 {
@@ -71,12 +124,42 @@ void MainWidget::rotRight(){
 
     rotationAxis = (QVector3D(0,1,0)).normalized();
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, +45) * rotation;
+    /**********************/
+    cubelist[0].posX = cubelist[0].posX+1;
+    cubelist[0].posZ = cubelist[0].posZ+1;
+    cubelist[1].posX = cubelist[1].posX+1;
+    cubelist[1].posZ = cubelist[1].posZ-1;
+    cubelist[2].posX = cubelist[2].posX+1;
+    cubelist[2].posZ = cubelist[2].posZ+1;
+    cubelist[3].posX = cubelist[3].posX+1;
+    cubelist[3].posZ = cubelist[3].posZ-1;
     update();
 }
+
+void MainWidget::rotUpdate(QString dir, int cubeIndex, double rotAngel){
+    if(dir == "right"){
+        if(cubelist[cubeIndex].wordPos+rotAngel <360){
+
+        }
+
+
+
+    }
+}
+
 void MainWidget::rotLeft(){
 
     rotationAxis = (QVector3D(0,1,0)).normalized();
     rotation = QQuaternion::fromAxisAndAngle(rotationAxis, -45) * rotation;
+    /**********************/
+    cubelist[0].posX = cubelist[0].posX-1;
+    cubelist[0].posZ = cubelist[0].posZ-1;
+    cubelist[1].posX = cubelist[1].posX-1;
+    cubelist[1].posZ = cubelist[1].posZ+1;
+    cubelist[2].posX = cubelist[2].posX-1;
+    cubelist[2].posZ = cubelist[2].posZ-1;
+    cubelist[3].posX = cubelist[3].posX-1;
+    cubelist[3].posZ = cubelist[3].posZ+1;
     update();
 }
 void MainWidget::rotUp(){
@@ -207,7 +290,7 @@ void MainWidget::resizeGL(int w, int h)
     qreal aspect = qreal(w) / qreal(h ? h : 1);
 
     // Set near plane to 3.0, far plane to 7.0, field of view 45 degrees
-    const qreal zNear = 3.0, zFar = 7.0, fov = 45.0;
+    const qreal zNear = 3.0, zFar = 70.0, fov = 45.0;
 
     // Reset projection
     projection.setToIdentity();
@@ -224,18 +307,59 @@ void MainWidget::paintGL()
 
     texture->bind();
 
-    // Calculate model view transformation
-    QMatrix4x4 matrix;
-    matrix.translate(0.0, 0.0, -5.0);
-    matrix.rotate(rotation);
-
-    // Set modelview-projection matrix
-    program.setUniformValue("mvp_matrix", projection * matrix);
-
-
     // Use texture unit 0 which contains cube.png
     program.setUniformValue("texture", 0);
 
+    /****************************************/
+
+    // Calculate model view transformation
+    QMatrix4x4 matrix;
+    matrix.translate(cubelist[0].posX, cubelist[0].posY, cubelist[0].posZ);
+    matrix.rotate(rotation);
+    // Set modelview-projection matrix
+    program.setUniformValue("mvp_matrix", projection * matrix);
     // Draw cube geometry
+    geometries->drawCubeGeometry(&program);
+
+    QMatrix4x4 matrix1;
+    matrix1.translate(cubelist[1].posX, cubelist[1].posY, cubelist[1].posZ);
+    matrix1.rotate(rotation);
+    program.setUniformValue("mvp_matrix", projection * matrix1);
+    geometries->drawCubeGeometry(&program);
+
+    QMatrix4x4 matrix2;
+    matrix2.translate(cubelist[2].posX, cubelist[2].posY, cubelist[2].posZ);
+    matrix2.rotate(rotation);
+    program.setUniformValue("mvp_matrix", projection * matrix2);
+    geometries->drawCubeGeometry(&program);
+
+    QMatrix4x4 matrix3;
+    matrix3.translate(cubelist[3].posX, cubelist[3].posY, cubelist[3].posZ);
+    matrix3.rotate(rotation);
+    program.setUniformValue("mvp_matrix", projection * matrix3);
+    geometries->drawCubeGeometry(&program);
+
+    QMatrix4x4 matrix4;
+    matrix4.translate(cubelist[4].posX, cubelist[4].posY, cubelist[4].posZ);
+    matrix4.rotate(rotation);
+    program.setUniformValue("mvp_matrix", projection * matrix4);
+    geometries->drawCubeGeometry(&program);
+
+    QMatrix4x4 matrix5;
+    matrix5.translate(cubelist[5].posX, cubelist[5].posY, cubelist[5].posZ);
+    matrix5.rotate(rotation);
+    program.setUniformValue("mvp_matrix", projection * matrix5);
+    geometries->drawCubeGeometry(&program);
+
+    QMatrix4x4 matrix6;
+    matrix6.translate(cubelist[6].posX, cubelist[6].posY, cubelist[6].posZ);
+    matrix6.rotate(rotation);
+    program.setUniformValue("mvp_matrix", projection * matrix6);
+    geometries->drawCubeGeometry(&program);
+
+    QMatrix4x4 matrix7;
+    matrix7.translate(cubelist[7].posX, cubelist[7].posY, cubelist[7].posZ);
+    matrix7.rotate(rotation);
+    program.setUniformValue("mvp_matrix", projection * matrix7);
     geometries->drawCubeGeometry(&program);
 }

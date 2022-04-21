@@ -62,6 +62,7 @@
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
 #include <QDebug>
+#include <smallcubes.h>
 
 
 class GeometryEngine;
@@ -83,7 +84,7 @@ protected:
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
     void timerEvent(QTimerEvent *e) override;
-
+    void rotUpdate(QString dir, int cubeIndex, double rotAngel);
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
@@ -106,6 +107,7 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed = 0;
     QQuaternion rotation;
+    Cube cubelist[8];
 };
 
 #endif // MAINWIDGET_H

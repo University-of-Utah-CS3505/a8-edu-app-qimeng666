@@ -58,11 +58,13 @@ SOURCES += \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
     SceneWidget.cpp \
+    cube.cpp \
     geometryengine.cpp \
     main.cpp \
     MainWindow.cpp \
     mainwidget.cpp \
-    rubik.cpp
+    rubik.cpp \
+    smallcubes.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -114,9 +116,11 @@ HEADERS += \
     Box2D/Rope/b2Rope.h \
     MainWindow.h \
     SceneWidget.h \
+    cube.h \
     geometryengine.h \
     mainwidget.h \
-    rubik.h
+    rubik.h \
+    smallcubes.h
 
 FORMS += \
     MainWindow.ui \

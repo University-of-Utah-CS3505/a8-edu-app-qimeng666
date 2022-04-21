@@ -24,5 +24,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Education eduWindow;
+
 };
 #endif // MAINWINDOW_H
