@@ -1,24 +1,17 @@
-QT += core gui widgets opengl openglwidgets
-
-TARGET = cube
-TEMPLATE = app
-
-SOURCES += main.cpp
+HEADERS += \
+    cube.h
 
 SOURCES += \
-    mainwidget.cpp \
-    geometryengine.cpp
+    cube.cpp \
+    main.cpp
 
-HEADERS += \
-    mainwidget.h \
-    geometryengine.h
+QT   += core gui opengl
+
+greaterThan(QT_MAJOR_VERSION,4):QT +=widgets
+
+LIBS += -lGLU
+
+CONFIG += c++11
 
 RESOURCES += \
-    shaders.qrc \
-    textures.qrc
-
-# install
-target.path = $$[QT_INSTALL_EXAMPLES]/opengl/cube
-INSTALLS += target
-
-DISTFILES +=
+    res.qrc

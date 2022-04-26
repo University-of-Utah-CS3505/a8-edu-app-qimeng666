@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/2x2-step2.png</file>
+        <file>res/2x2-step3.png</file>
+        <file>res/OLL-1.png</file>
+        <file>res/OLL-2.png</file>
+        <file>res/OLL-3.png</file>
+        <file>res/OLL-4.png</file>
+        <file>res/OLL-5.png</file>
+        <file>res/OLL-6.png</file>
+        <file>res/OLL-7.png</file>
+        <file>res/PLL.png</file>
+        <file>res/step1-case1.png</file>
+        <file>res/step1-case2.png</file>
+        <file>res/step1-case3.png</file>
+        <file>res/step1-right-wrong-example.png</file>
+        <file>res/step3-example.png</file>
+    </qresource>
+</RCC>

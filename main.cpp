@@ -1,40 +1,26 @@
-//#include "MainWindow.h"
-
-//#include <QApplication>
-
-//int main(int argc, char *argv[])
-//{
-//    QApplication a(argc, argv);
-//    MainWindow w;
-//    w.show();
-//    return a.exec();
-//}
-#include "MainWindow.h"
 #include <QApplication>
-#include <QLabel>
-#include <QSurfaceFormat>
-
-#ifndef QT_NO_OPENGL
-#include "mainwidget.h"
-#endif
-
+#include<iostream>
+#include "cube.h"
+/**
+ * @brief CubeWidget::CubeWidget
+ * start the application.
+ *
+ * @author:Robert Li, Wenlin Li, Qingwen Bao, Julian Zhou, Qimeng Chao.
+ * @version: 1.0 Implement the cube rotation
+ * @version: 2.0 Added mess cube, reset the cube, and pages functions.
+ * @version: 3.0 Added 5 cases for users to try and learn, solution provided.
+ *
+ */
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    MainWindow w;
-    w.show();
-//    QSurfaceFormat format;
-//    format.setDepthBufferSize(24);
-//    QSurfaceFormat::setDefaultFormat(format);
 
-//    app.setApplicationName("cube");
-//    app.setApplicationVersion("0.1");
-#ifndef QT_NO_OPENGL
-//    MainWidget widget;
-//    widget.show();
-#else
-    QLabel note("OpenGL Support required");
-    note.show();
-#endif
+//    QCube w;
+//    w.resize(400, 300);
+//    w.show();
+    CubeWidget w;
+    w.show();
+
     return app.exec();
 }
+
